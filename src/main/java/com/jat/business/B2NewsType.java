@@ -1,12 +1,14 @@
-package com.jat.system;
+package com.jat.business;
 
-public class TableColumn {
+public class B2NewsType {
     private long id;
     private String name;
+    private long parentId;
 
-    public TableColumn(long id, String name) {
+    public B2NewsType(long id, String name, long parentId) {
         this.id = id;
         this.name = name;
+        this.parentId = parentId;
     }
 
     public long getId() {
@@ -17,11 +19,16 @@ public class TableColumn {
         return name;
     }
 
+    public long getParentId() {
+        return parentId;
+    }
+
     @Override
     public String toString() {
         return "{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", parentId=" + parentId +
                 '}';
     }
 }

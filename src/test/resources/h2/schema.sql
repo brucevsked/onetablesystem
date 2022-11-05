@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS `onetablesystem`;
+DROP TABLE IF EXISTS `systemdata1`;
 
-CREATE TABLE IF NOT EXISTS `onetablesystem`
+CREATE TABLE IF NOT EXISTS `systemdata1`
 (
-    `id`         integer PRIMARY KEY,
-    `row`        integer not null,
-    `column`     VARCHAR(256) not null ,
-    `value`      text,
-    `tag`        VARCHAR(256) not null
+    `id`    integer auto_increment PRIMARY KEY,
+    `r`     integer not null,
+    `c`     VARCHAR(256) not null ,
+    `v`     text,
+    `t`     VARCHAR(256) not null
 );

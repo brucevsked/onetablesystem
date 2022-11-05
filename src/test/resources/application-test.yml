@@ -10,9 +10,9 @@ spring:
       ddl-auto: none
     show-sql: true
   datasource:
-    url: jdbc:h2:mem:test
-    username: test
-    password: test
+    url: jdbc:h2:mem:onetablesystem
+    username: root
+    password: IamNotAI
     driver-class-name: org.h2.Driver
     hikari:
       connection-test-query: select 1

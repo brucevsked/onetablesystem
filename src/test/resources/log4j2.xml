@@ -5,8 +5,8 @@
 <!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
 <configuration status="warn" monitorInterval="60">
     <Properties>
-        <Property name="logpath">/logs/vskedtoolboxtest/</Property>
-        <Property name="logname">vskedtoolboxtest</Property>
+        <Property name="logpath">/logs/onetablesystemtest/</Property>
+        <Property name="logname">onetablesystemtest</Property>
     </Properties>
     <!--先定义所有的appender-->
     <appenders>
