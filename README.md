@@ -42,7 +42,40 @@ GROUP_CONCAT(case when c=2 then v end ) 'name',
 GROUP_CONCAT(case when c=3 then v end ) 'pass',
 GROUP_CONCAT(case when c=4 then v end ) 'regdate' from `systemdata1` where t='b1user' group by r;
 
+select max(r),t from `systemdata1` group by `t`
+select max(r) from `systemdata1` where t='b1user' group by `t`
 
+select * from (
+select r as id,
+GROUP_CONCAT(case when c='tableId' then v end ) tid,
+GROUP_CONCAT(case when c='tableColumnName' then v end ) tcn,
+GROUP_CONCAT(case when c='tableColumnDataTypeId' then v end ) tcdt from `systemdata1`
+where t='s5tableColumn' group by r) tba where tba.tid=1;
+
+-- db list 
+select * from (
+select r as id,
+GROUP_CONCAT(case when c='databaseName' then v end ) dbname from `systemdata1`
+where t='s3database' group by r) dblist;
+
+-- table list by db id
+select * from (
+select r as id,
+GROUP_CONCAT(case when c='tableName' then v end ) tname,
+GROUP_CONCAT(case when c='databaseId' then v end ) dbId from `systemdata1`
+where t='s4table' group by r) tba where dbId=1;
+
+-- column list by table name
+select * from (
+select r as id,
+GROUP_CONCAT(case when c='tableId' then v end ) tid,
+GROUP_CONCAT(case when c='tableColumnName' then v end ) tcn,
+GROUP_CONCAT(case when c='tableColumnDataTypeId' then v end ) tcdt from `systemdata1`
+where t='s5tableColumn' group by r) tba where tba.tid=(select ttid from (
+select r as ttid,
+GROUP_CONCAT(case when c='tableName' then v end ) tname,
+GROUP_CONCAT(case when c='databaseId' then v end ) dbId from `systemdata1`
+where t='s4table' group by r) tblist where tblist.tname='b1User');
 
 
 

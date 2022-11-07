@@ -60,6 +60,15 @@ public class SystemService {
         return bos;
     }
 
+    public Long findMaxIdByTag(String tag){
+        Long id= systemRepository.findMaxIdByTag(tag);
+        return id==null?0:id;
+    }
+
+    public Object[] findDb(){
+        return systemRepository.findDb();
+    }
+
     public TableRecord findBy(long id){
         TableRecordPO po=systemRepository.findById(id).orElse(null);
         TableRecord bo=poToBo(po);

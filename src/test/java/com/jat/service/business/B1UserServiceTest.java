@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
 public class B1UserServiceTest extends BaseTestWithTransactional {

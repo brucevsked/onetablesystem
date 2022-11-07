@@ -50,6 +50,19 @@ public class SystemServiceTest extends BaseTestWithTransactional {
     }
 
     @Test
+    public void findMaxIdByTag(){
+        String tag="b2newType";
+        Long maxId=service.findMaxIdByTag(tag);
+        log.debug("{}",maxId);
+    }
+
+    @Test
+    public void findDb(){
+        Object[] dbList=service.findDb();
+        log.debug("{}",dbList);
+    }
+
+    @Test
     public void findB1UserAll(){
         List bos=service.findB1UserAll();
         log.debug("{}",bos);
