@@ -58,8 +58,15 @@ public class SystemServiceTest extends BaseTestWithTransactional {
 
     @Test
     public void findDb(){
-        Object[] dbList=service.findDb();
+        List<Object[]> dbList=service.findDb();
         log.debug("{}",dbList);
+    }
+
+    @Test
+    public void findB1UserByUserName(){
+        String userName="admin";
+        Object[] po=service.findB1UserByUserName(userName);
+        log.debug("{}",po);
     }
 
     @Test

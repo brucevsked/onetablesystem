@@ -18,6 +18,13 @@ public class B1UserServiceTest extends BaseTestWithTransactional {
     B1UserService b1UserService;
 
     @Test
+    public void findByUserName(){
+        String userName="admin";
+        B1User bo=b1UserService.findByUserName(userName);
+        log.debug("{}",bo);
+    }
+
+    @Test
     public void findAll(){
         List<B1User> bos=b1UserService.findAll();
         log.debug("{}",bos);

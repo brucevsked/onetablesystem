@@ -65,7 +65,7 @@ public class SystemService {
         return id==null?0:id;
     }
 
-    public Object[] findDb(){
+    public List<Object[]> findDb(){
         return systemRepository.findDb();
     }
 
@@ -100,6 +100,10 @@ public class SystemService {
             if(bo!=null) pos.add(boToPo(bo));
         }
         return pos;
+    }
+
+    public Object[] findB1UserByUserName(String userName){
+        return systemRepository.findB1UserByUserName(userName);
     }
 
     public List<Object[]> findB1UserAll(){

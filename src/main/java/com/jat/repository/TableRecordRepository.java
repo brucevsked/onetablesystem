@@ -17,10 +17,13 @@ public interface TableRecordRepository extends JpaRepository<TableRecordPO,Long>
     Long findMaxIdByTag(String tag);
 
     @Query(value = "select * from (select r as id,GROUP_CONCAT(case when c='databaseName' then v end ) dbname from `systemdata1` where t='s3database' group by r) dblist",nativeQuery = true)
-    Object[] findDb();
+    List<Object[]> findDb();
 
     @Query(value = "select r,GROUP_CONCAT(case when c=2 then v end SEPARATOR ''),GROUP_CONCAT(case when c=3 then v end SEPARATOR ''),GROUP_CONCAT(case when c=4 then v end SEPARATOR '') from `systemdata1` where t='b1user' group by r",nativeQuery = true)
     List<Object[]> findB1UserAll();
+
+    @Query(value = "select * from (select r,GROUP_CONCAT(case when c=2 then v end SEPARATOR '') c1,GROUP_CONCAT(case when c=3 then v end SEPARATOR '') c2,GROUP_CONCAT(case when c=4 then v end SEPARATOR '') c3 from `systemdata1` where t='b1user' group by r) tb1 where tb1.c1=:userName",nativeQuery = true)
+    Object[] findB1UserByUserName(String userName);
 
     @Query(value = "select r,GROUP_CONCAT(case when c=2 then v end SEPARATOR ''),GROUP_CONCAT(case when c=3 then v end SEPARATOR ''),GROUP_CONCAT(case when c=4 then v end SEPARATOR '') from `systemdata1` where t='b1user' group by r ",nativeQuery = true)
     List<Object[]> findB1UserAll(Pageable pageable);

@@ -16,6 +16,13 @@ public class B1UserService {
     @Autowired
     SystemService systemService;
 
+    public B1User findByUserName(String userName){
+        Object[] po= systemService.findB1UserByUserName(userName);
+        B1User bo=poToBo1(po);
+        po=null;
+        return bo;
+    }
+
     public List<B1User> findAll(){
         long c1=2;
         long c2=3;
@@ -38,6 +45,12 @@ public class B1UserService {
         return bos;
     }
 
+    public B1User poToBo1(Object[] po){
+        if(po==null || po.length==0) return null;
+        Object[] user= (Object[]) po[0];
+        DateTimeFormatter dtf=DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        return new B1User(Long.valueOf(user[0]+""),user[1]+"",user[2]+"", LocalDate.parse(user[3]+"",dtf));
+    }
 
     public B1User poToBo(Object[] po){
         if(po==null) return null;
